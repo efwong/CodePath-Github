@@ -42,6 +42,7 @@ class RepoResultsViewController: UIViewController {
 
             // Print the returned repositories to the output window
             for repo in newRepos {
+                self.repos.append(repo)
                 print(repo)
             }   
 
