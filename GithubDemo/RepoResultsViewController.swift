@@ -81,6 +81,17 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repos.count
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="ShowSettingsModal"{
+            
+            if let navVC = segue.destination as? UINavigationController{
+                if let destinationVC = navVC.viewControllers[0] as? SettingsViewController {
+                    destinationVC.settings = searchSettings
+                }
+            }
+        }
+    }
 }
 
 // SearchBar methods

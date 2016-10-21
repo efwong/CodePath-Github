@@ -16,4 +16,13 @@ class GithubRepoSearchSettings {
     init() {
         
     }
+    
+    init(_ searchString: String?, _ minStars: Int){
+        self.searchString = searchString
+        self.minStars = minStars
+    }
+    
+    func copy() -> GithubRepoSearchSettings{
+        return GithubRepoSearchSettings(searchString, minStars)
+    }
 }
