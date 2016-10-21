@@ -16,6 +16,7 @@ class RepoTableViewCell: UITableViewCell {
     @IBOutlet weak var starCountLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var forkCount: UILabel!
+    @IBOutlet weak var ownerLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

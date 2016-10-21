@@ -25,8 +25,9 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         self.repos = []
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        //self.tableView.rowHeight = 300
         // Initialize the UISearchBar
         searchBar = UISearchBar()
         searchBar.delegate = self
@@ -61,7 +62,18 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         })
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "com.repoViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "com.repoViewCell", for: indexPath) as! RepoTableViewCell
+        if indexPath.row < self.repos.count{
+            let repo = self.repos[indexPath.row]
+            cell.nameLabel.text = repo.name
+            cell.forkCount.text = "\(repo.forks ?? 0)"
+            cell.starCountLabel.text = "\(repo.stars ?? 0)"
+            cell.descriptionLabel.text = repo.repoDescription
+            cell.ownerLabel.text = repo.ownerHandle
+            if let imageUrl = repo.ownerAvatarURL{
+                cell.repoImageView?.setImageWith(URL(string: imageUrl)!, placeholderImage: UIImage(named: "placeholder"))
+            }
+        }
         
         return cell
     }
