@@ -9,7 +9,7 @@
 import Foundation
 
 // Model class that represents the user's search settings
-class GithubRepoSearchSettings {
+struct GithubRepoSearchSettings {
     var searchString: String?
     var minStars = 0
     
@@ -22,7 +22,7 @@ class GithubRepoSearchSettings {
         self.minStars = minStars
     }
     
-    func copy() -> GithubRepoSearchSettings{
-        return GithubRepoSearchSettings(searchString, minStars)
-    }
+//    func copy() -> GithubRepoSearchSettings{
+//        return GithubRepoSearchSettings(searchString, minStars)
+//    }
 }

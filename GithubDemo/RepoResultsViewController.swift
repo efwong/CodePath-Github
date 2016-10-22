@@ -11,7 +11,7 @@ import MBProgressHUD
 import AFNetworking
 
 // Main ViewController
-class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,ModalSettingsViewControllerDelegate {
 
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
@@ -88,9 +88,16 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
             if let navVC = segue.destination as? UINavigationController{
                 if let destinationVC = navVC.viewControllers[0] as? SettingsViewController {
                     destinationVC.settings = searchSettings
+                    destinationVC.delegate = self
                 }
             }
         }
+    }
+    
+    // Delegate Method from ModalSettingsViewControllerDelegate
+    // sends back data from Settings Modal View
+    func sendValue(settings: GithubRepoSearchSettings) {
+        self.searchSettings = settings
     }
 }
 

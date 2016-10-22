@@ -10,8 +10,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    var settings:GithubRepoSearchSettings?
-    var prevSettings:GithubRepoSearchSettings?
+    weak var delegate: ModalSettingsViewControllerDelegate?
+    
+    var settings:GithubRepoSearchSettings? // current settings property
+    var prevSettings:GithubRepoSearchSettings? // initial settings property
     var minStars:Int = 0
     
     @IBOutlet weak var minimumStarsSlider: UISlider!
@@ -23,7 +25,7 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        prevSettings = settings?.copy()
+        self.prevSettings = self.settings
         
         minStars = (settings?.minStars)!
         minStarsLabel.text = "\(minStars)"
@@ -44,12 +46,15 @@ class SettingsViewController: UIViewController {
     @IBAction func onSave(_ sender: UIBarButtonItem) {
         // update settings variable
         settings?.minStars = minStars
+        if let settingsToSend = settings{
+            delegate?.sendValue(settings: settingsToSend)
+        }
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onCancel(_ sender: UIBarButtonItem) {
         // revert settings to previous copy
-        self.settings = prevSettings?.copy()
+        self.settings = self.prevSettings
         self.prevSettings = nil
         dismiss(animated: true, completion: nil)
     }
