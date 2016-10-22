@@ -110,12 +110,6 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
             modalVC.cancelSettings()
         }
     }
-    
-    // Delegate Method from ModalSettingsViewControllerDelegate
-    // sends back data from Settings Modal View
-//    func sendValue(settings: GithubRepoSearchSettings) {
-//        self.searchSettings = settings
-//    }
 }
 
 // SearchBar methods

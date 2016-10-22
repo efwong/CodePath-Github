@@ -88,6 +88,17 @@ class GithubRepo: CustomStringConvertible {
         if let searchString = settings.searchString {
             q = q + searchString
         }
+        // add languages param
+        if settings.languages.count > 0{
+            q = q + " language:"
+            for (index, language) in settings.languages.enumerated(){
+                if index == settings.languages.count-1{
+                    q = q + "\(language)"
+                }else{
+                    q = q + "\(language) "
+                }
+            }
+        }
         q = q + " stars:>\(settings.minStars)"
         params["q"] = q
         

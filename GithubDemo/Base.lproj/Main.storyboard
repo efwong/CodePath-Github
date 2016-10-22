@@ -188,8 +188,8 @@
                                     <constraint firstAttribute="height" constant="50" id="qzZ-Ev-DDJ"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ftR-zb-S3D">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ftR-zb-S3D">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="HUq-iF-GZu">
                                         <rect key="frame" x="0.0" y="28" width="375" height="111"/>
@@ -228,6 +228,7 @@
                     <connections>
                         <outlet property="minStarsLabel" destination="oaz-Ec-h3c" id="ymB-FZ-OUc"/>
                         <outlet property="minimumStarsSlider" destination="vNX-OG-F5e" id="ygr-Gw-XBR"/>
+                        <outlet property="tableView" destination="ftR-zb-S3D" id="rCZ-XE-sU5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdh-jy-TQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
