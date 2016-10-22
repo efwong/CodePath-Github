@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    weak var delegate: ModalSettingsViewControllerDelegate?
+    //weak var delegate: ModalSettingsViewControllerDelegate?
     
     var settings:GithubRepoSearchSettings? // current settings property
     var prevSettings:GithubRepoSearchSettings? // initial settings property
@@ -43,21 +43,34 @@ class SettingsViewController: UIViewController {
         minStarsLabel.text = "\(minStars)"
     }
     
-    @IBAction func onSave(_ sender: UIBarButtonItem) {
-        // update settings variable
+    // save settings and return object
+    func saveAndReturnSettings() -> GithubRepoSearchSettings?{
         settings?.minStars = minStars
-        if let settingsToSend = settings{
-            delegate?.sendValue(settings: settingsToSend)
-        }
-        dismiss(animated: true, completion: nil)
+        return settings
     }
     
-    @IBAction func onCancel(_ sender: UIBarButtonItem) {
+    // cancel settings
+    func cancelSettings(){
         // revert settings to previous copy
         self.settings = self.prevSettings
         self.prevSettings = nil
-        dismiss(animated: true, completion: nil)
     }
+    
+//    @IBAction func onSave(_ sender: UIBarButtonItem) {
+//        // update settings variable
+//        settings?.minStars = minStars
+//        if let settingsToSend = settings{
+//            delegate?.sendValue(settings: settingsToSend)
+//        }
+//        dismiss(animated: true, completion: nil)
+//    }
+//    
+//    @IBAction func onCancel(_ sender: UIBarButtonItem) {
+//        // revert settings to previous copy
+//        self.settings = self.prevSettings
+//        self.prevSettings = nil
+//        dismiss(animated: true, completion: nil)
+//    }
     /*
     // MARK: - Navigation
 

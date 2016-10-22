@@ -11,7 +11,7 @@ import MBProgressHUD
 import AFNetworking
 
 // Main ViewController
-class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,ModalSettingsViewControllerDelegate {
+class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
@@ -42,7 +42,9 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
 
     // Perform the search.
     fileprivate func doSearch() {
-
+        // clear results
+        self.repos.removeAll()
+        
         MBProgressHUD.showAdded(to: self.view, animated: true)
 
         // Perform request to GitHub API to get the list of repositories
@@ -88,17 +90,32 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
             if let navVC = segue.destination as? UINavigationController{
                 if let destinationVC = navVC.viewControllers[0] as? SettingsViewController {
                     destinationVC.settings = searchSettings
-                    destinationVC.delegate = self
+                    //destinationVC.delegate = self
                 }
             }
         }
     }
     
+    @IBAction func saveSettings(segue: UIStoryboardSegue){
+        if let modalVC = segue.source as? SettingsViewController{
+            if let modalSettings = modalVC.saveAndReturnSettings(){
+                self.searchSettings = modalSettings
+                doSearch() // refresh search
+            }
+        }
+    }
+    
+    @IBAction func cancelSettings(segue: UIStoryboardSegue){
+        if let modalVC = segue.source as? SettingsViewController{
+            modalVC.cancelSettings()
+        }
+    }
+    
     // Delegate Method from ModalSettingsViewControllerDelegate
     // sends back data from Settings Modal View
-    func sendValue(settings: GithubRepoSearchSettings) {
-        self.searchSettings = settings
-    }
+//    func sendValue(settings: GithubRepoSearchSettings) {
+//        self.searchSettings = settings
+//    }
 }
 
 // SearchBar methods

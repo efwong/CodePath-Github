@@ -185,26 +185,43 @@
                                     <constraint firstItem="SBv-Za-o3F" firstAttribute="leading" secondItem="F3B-Ve-8Yu" secondAttribute="leading" constant="10" id="aau-b7-xok"/>
                                     <constraint firstItem="vNX-OG-F5e" firstAttribute="centerY" secondItem="SBv-Za-o3F" secondAttribute="centerY" id="mfo-Mh-Tql"/>
                                     <constraint firstItem="oaz-Ec-h3c" firstAttribute="centerY" secondItem="vNX-OG-F5e" secondAttribute="centerY" id="oBW-wC-0xR"/>
-                                    <constraint firstAttribute="height" constant="100" id="qzZ-Ev-DDJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="qzZ-Ev-DDJ"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ftR-zb-S3D">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="HUq-iF-GZu">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="111"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HUq-iF-GZu" id="SI0-2Z-Ng0">
+                                            <frame key="frameInset" width="375" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="BD1-QG-11Z" firstAttribute="top" secondItem="ftR-zb-S3D" secondAttribute="bottom" id="L5O-e6-j2h"/>
+                            <constraint firstItem="ftR-zb-S3D" firstAttribute="top" secondItem="F3B-Ve-8Yu" secondAttribute="bottom" constant="20" id="RSv-dN-RdP"/>
                             <constraint firstAttribute="trailing" secondItem="F3B-Ve-8Yu" secondAttribute="trailing" id="eTr-Ny-4Yl"/>
                             <constraint firstItem="F3B-Ve-8Yu" firstAttribute="top" secondItem="W6G-qX-x1C" secondAttribute="bottom" constant="50" id="euX-Cx-H0a"/>
+                            <constraint firstItem="ftR-zb-S3D" firstAttribute="leading" secondItem="UBq-6P-PNP" secondAttribute="leading" id="kUu-nt-H4P"/>
+                            <constraint firstAttribute="trailing" secondItem="ftR-zb-S3D" secondAttribute="trailing" id="khq-Jh-Ap7"/>
                             <constraint firstItem="F3B-Ve-8Yu" firstAttribute="leading" secondItem="UBq-6P-PNP" secondAttribute="leading" id="w4l-DA-L1U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xya-Yn-718">
                         <barButtonItem key="leftBarButtonItem" title="Save" id="7pV-xd-Zeb">
                             <connections>
-                                <action selector="onSave:" destination="3uY-PG-c4e" id="N97-Gy-cTb"/>
+                                <segue destination="cnj-wk-OLT" kind="unwind" unwindAction="saveSettingsWithSegue:" id="tW7-Zi-Tau"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="rMH-Dt-PLF">
                             <connections>
-                                <action selector="onCancel:" destination="3uY-PG-c4e" id="wAk-Ca-Bv8"/>
+                                <segue destination="cnj-wk-OLT" kind="unwind" unwindAction="cancelSettingsWithSegue:" id="r7b-iI-2pI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -214,8 +231,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdh-jy-TQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cnj-wk-OLT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2608.8000000000002" y="-557.27136431784118"/>
+            <point key="canvasLocation" x="2608.8000000000002" y="-558.17091454272872"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FpP-oR-azb">
